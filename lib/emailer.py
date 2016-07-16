@@ -1,5 +1,6 @@
 import config
 
+
 def send_email(subject, plaintext, people, sender=config.SENDER):
   # Import smtplib for the actual sending function
   import smtplib
@@ -24,4 +25,3 @@ def send_email(subject, plaintext, people, sender=config.SENDER):
   s.login(config.SMTP_USER, config.SMTP_PASS)
   s.sendmail(sender, people, msg.as_string())
   s.quit()
-

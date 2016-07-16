@@ -1,0 +1,5 @@
+*.sw?
+*.pyc
+local.py
+alarms
+history
