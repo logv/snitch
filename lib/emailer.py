@@ -1,5 +1,6 @@
 import config
 
+import opts
 
 def send_email(subject, plaintext, people, sender=config.SENDER):
   # Import smtplib for the actual sending function
@@ -25,3 +26,14 @@ def send_email(subject, plaintext, people, sender=config.SENDER):
   s.login(config.SMTP_USER, config.SMTP_PASS)
   s.sendmail(sender, people, msg.as_string())
   s.quit()
+
+
+def email_peoples(msg, body, to_notify):
+  if isinstance(to_notify, str):
+    to_notify = [to_notify]
+
+  if opts.SEND_EMAIL:
+    print "SENDING EMAIL: %s" % msg
+    send_email(msg, body, to_notify)
+
+
