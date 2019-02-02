@@ -27,7 +27,7 @@ from lib.opts import post_to_snorkel
 import lib.opts as opts
 
 def check_series(section, config):
-  url = config.get(section, 'url', True)  # reading in raw values because of %
+  url = config.get(section, 'url')
   notify = config.get(section, 'notify')
   name = config.get(section, 'name')
 
@@ -297,7 +297,7 @@ def process_alerts():
   alerted = 0
   for f in files:
     with open(f) as of:
-      config = CP.SafeConfigParser()
+      config = CP.RawConfigParser()
       config.optionxform = lambda x: str(x).lower()
       config.readfp(of)
       sections = config.sections()
